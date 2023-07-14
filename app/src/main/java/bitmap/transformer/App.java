@@ -3,10 +3,13 @@
  */
 package bitmap.transformer;
 
+import java.io.IOException;
+import java.nio.file.Path;
+
 public class App {
   public static void main(String[] args) {
     if (args.length != 3) {
-      System.out.println("No, that's not right: App <input-file-path> <output-file-path> <transform-name>");
+      System.out.println("Try again!: App <input-file-path> <output-file-path> <transform-name>");
       return;
     }
 
@@ -14,22 +17,33 @@ public class App {
     String outputFilePath = args[1];
     String transformName = args[2];
 
-    Bitmap bitmap = new Bitmap(inputFilePath);
+    try {
+      Bitmap bitmap = new Bitmap(Path.of(inputFilePath));
 
-    // types of transforms to choose using a switch case, there's got to be an easier way.
-    switch (transformName) {
-      case "invert":
-        bitmap.invertColors();
-        break;
-      // Add the others here, Grayscale and Sepia?
-      default:
-        System.out.println("Unknown transformation: " + transformName);
-        return;
+      // types of transforms to choose using a switch case, there's got to be an easier way.
+      switch (transformName) {
+        case "invert":
+          bitmap.invertColors();
+          break;
+        case "grayscale":
+          bitmap.grayscaleColors();
+          break;
+        case "sepia":
+          bitmap.sepiaFilter();
+          break;
+        default:
+          System.out.println("Ain't nobody got time for that: " + transformName);
+          return;
+      }
+
+      // instead of return it do a file
+      bitmap.writeToFile(Path.of(outputFilePath));
+
+      System.out.println("Image has been BAKED... HAHA YEAH BRO!");
+    } catch (IOException e) {
+      System.out.println("An error occurred while your image was getting baked: " + e.getMessage());
+    } catch (IllegalArgumentException e) {
+      System.out.println(e.getMessage());
     }
-
-    // instead of return it do a file
-    bitmap.writeToFile(outputFilePath);
-
-    System.out.println("Image has been BAKED... HAHA YEAH BRO!");
   }
 }
