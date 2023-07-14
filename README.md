@@ -33,10 +33,13 @@ gradle build
 - `<output-file-path>`: Replace this with the path where you want to save the transformed bitmap file.
 - `<transform-name>`: Replace this with the name of the transformation you want to apply. The options are "invert", "grayscale", or "sepia".
 
-For example:app/src/main/resources/baldy-8bit.bmp
+For example:
+``` bash
+./gradlew run --args 'src/main/resources/baldy-8bit.bmp src/main/resources/output.bmp invert'
 
-```bash
-./gradlew run --args='./app/src/main/resources/baldy-8bit.bmp ./app/src/main/resources/baldy-8bit-inverted.bmp invert'
+./gradlew run --args 'src/main/resources/baldy-8bit.bmp src/main/resources/output.png sepia'
+
+./gradlew run --args 'src/main/resources/baldy-8bit.bmp src/main/resources/output.bmp grayscale'
 ```
 
 This command will apply the invert color transformation to the `baldy-8bit.bmp` file and save the result as `baldy-8bit-inverted.bmp`.
