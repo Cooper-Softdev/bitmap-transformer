@@ -35,14 +35,15 @@ gradle build
 
 For example:
 ``` bash
-./gradlew run --args 'src/main/resources/baldy-8bit.bmp src/main/resources/output.bmp invert'
+./gradlew run --args 'src/main/resources/baldy-8bit.bmp src/main/resources/output.png invert'
 ```
 ``` bash
 ./gradlew run --args 'src/main/resources/baldy-8bit.bmp src/main/resources/output.png sepia'
 ```
 ```bash
-./gradlew run --args 'src/main/resources/baldy-8bit.bmp src/main/resources/output.bmp grayscale'
+./gradlew run --args 'src/main/resources/baldy-8bit.bmp src/main/resources/output.png grayscale'
 ```
+### Output file type must be png because reasons, I don't know why and I can't figure it out. Sorry!
 
 This command will apply the invert color transformation to the `baldy-8bit.bmp` file and save the result as `baldy-8bit-inverted.bmp`.
 
