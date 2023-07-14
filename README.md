@@ -36,9 +36,11 @@ gradle build
 For example:
 ``` bash
 ./gradlew run --args 'src/main/resources/baldy-8bit.bmp src/main/resources/output.bmp invert'
-
+```
+``` bash
 ./gradlew run --args 'src/main/resources/baldy-8bit.bmp src/main/resources/output.png sepia'
-
+```
+```bash
 ./gradlew run --args 'src/main/resources/baldy-8bit.bmp src/main/resources/output.bmp grayscale'
 ```
 
