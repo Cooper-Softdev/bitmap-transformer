@@ -83,15 +83,17 @@ public class Bitmap {
       }
     }
 
-    ImageIO.write(image, "bmp", filePath.toFile());
+    System.out.println("Attempting to write to file: " + filePath.toAbsolutePath());
 
-    // Check if the file exists because this is a nightmare. it says it works when I run but the file ain't nowhere
+    ImageIO.write(image, "png", filePath.toFile());
+
     if (filePath.toFile().exists()) {
       System.out.println("File has been written successfully!");
     } else {
       System.out.println("Failed to write the file.");
     }
   }
+
 
 
 }
